@@ -1,0 +1,12 @@
+{
+  "name": "hermes-continuum",
+  "label": "Continuum",
+  "description": "Continuum Console backend: Event Spine timeline, reviewed Oneiros memory, Tripwire decisions, and encrypted checkpoints. The interactive Console ships in desktop/plugin.js.",
+  "icon": "Orbit",
+  "version": "0.1.0",
+  "tab": {
+    "hidden": true
+  },
+  "entry": "dist/index.js",
+  "api": "plugin_api.py"
+}

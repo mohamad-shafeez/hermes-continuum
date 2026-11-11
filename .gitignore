@@ -1,0 +1,76 @@
+# Hermes Continuum .gitignore
+#
+# Keep the shipping plugin intentional: required runtime assets, tests,
+# fixtures, documentation and historical evidence are not ignored here.
+# In particular, dashboard/dist/index.js is a required production asset.
+
+# Python bytecode, caches and test tooling
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# Packaging/build artifacts
+build/
+*.egg-info/
+.eggs/
+
+# Node.js local dependencies and logs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local Hermes profiles, plugin data and runtime state
+profiles/
+plugin-data/
+desktop-plugins/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+*.hcc
+checkpoints/
+logs/
+*.log
+local/
+tmp/
+temp/
+.cache/
+
+# Local secrets and private material
+.env
+.env.*
+!.env.example
+secrets/
+*.secret
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo

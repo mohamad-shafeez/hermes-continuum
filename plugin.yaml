@@ -1,0 +1,209 @@
+name: hermes-continuum
+version: "0.3.0"
+description: >-
+  Nine-system Hermes plugin: an append-only Event Spine shared by Continuum
+  (portable work state), Kairos (environmental reality), Oneiros (reviewed
+  memory), Aletheia (evidence and protected work), Telos (goal integrity),
+  Tripwire (deterministic security), Moirai (impact previews), Metis
+  (retry-loop circuits), and Hephaestus (verified trace distillation, forged
+  skills and automation blueprints, and bounded safety leases), with a real
+  Continuum Console for Hermes Desktop.
+author: "Hermes Continuum"
+requires_hermes: ">=0.22.2"
+manifest_version: 2
+api_version: 1
+license: MIT
+tags: [continuum, memory, security, checkpoint, timeline, spine, evidence, reality, charters, previews, skills, leases, automation]
+python_dependencies:
+  - "cryptography>=46,<51"
+
+provides_hooks:
+  - pre_tool_call
+  - post_tool_call
+  - transform_tool_result
+  - pre_llm_call
+  - post_llm_call
+  - on_session_start
+  - on_session_end
+  - on_session_finalize
+  - on_session_reset
+  - pre_approval_request
+  - post_approval_response
+
+provides_tools:
+  - continuum_status
+  - continuum_recall
+  - continuum_memory_review
+  - continuum_dream
+  - continuum_checkpoint
+  - continuum_reality
+  - continuum_evidence
+  - continuum_charter
+  - continuum_preview
+  - continuum_execution
+  - continuum_forge
+  - continuum_lease
+
+capabilities: []
+
+config_schema:
+  recall_limit:
+    type: int
+    default: 5
+    label: "Recall facts per turn"
+    description: "Maximum confirmed and candidate facts injected before a model call (1-10)."
+  episode_retention_days:
+    type: int
+    default: 30
+    label: "Episode retention (days)"
+    description: "Captured episodes older than this are pruned by the retention command (1-3650)."
+  context_trust_window_minutes:
+    type: int
+    default: 30
+    label: "Context trust window (minutes)"
+    description: "How long an external source label influences sensitive-action checks in the same session."
+  tripwire_audit_allowed:
+    type: bool
+    default: true
+    label: "Record allowed security decisions"
+    description: "Also audit sensitive actions that the policy allowed, not only blocked or approval-gated ones."
+  enable_source_labels:
+    type: bool
+    default: true
+    label: "Label external tool results"
+    description: "Append a provenance banner to supported web/browser results. write_file, patch, and skill_manage are never touched."
+  enable_memory_capture:
+    type: bool
+    default: true
+    label: "Capture memory episodes"
+    description: "Record explicit user corrections and durable statements as reviewable candidates."
+  dream_episode_limit:
+    type: int
+    default: 100
+    label: "Dream episode limit"
+    description: "Maximum unprocessed episodes included in one manual consolidation pass (1-500)."
+  checkpoint_dir:
+    type: str
+    default: ""
+    label: "Checkpoint directory"
+    description: "Optional absolute directory for .hcc files. Empty uses the plugin data directory."
+  enable_kairos:
+    type: bool
+    default: true
+    label: "Enable Kairos reality checks"
+    description: "Capture checkpoint-time environment fingerprints and reality diffs. No file contents are stored."
+  kairos_scope:
+    type: str
+    default: ""
+    label: "Kairos workspace scope"
+    description: "Optional directory to fingerprint. Empty uses the active workspace."
+  kairos_max_files:
+    type: int
+    default: 200
+    label: "Kairos maximum files"
+    description: "Maximum files fingerprinted per snapshot (1-2000)."
+  kairos_max_file_bytes:
+    type: int
+    default: 2097152
+    label: "Kairos hash size limit (bytes)"
+    description: "Largest file hashed for a fingerprint (4 KiB-32 MiB)."
+  kairos_required_tools:
+    type: str
+    default: ""
+    label: "Kairos required tools"
+    description: "Optional comma-separated tool executables whose presence should be observed."
+  enable_aletheia:
+    type: bool
+    default: true
+    label: "Enable Aletheia evidence"
+    description: "Record evidence receipts, stale them on environmental change, and protect explicit artifacts."
+  enable_telos:
+    type: bool
+    default: true
+    label: "Enable Telos charters"
+    description: "Create user-authored task charters, track drift, and score completion honestly."
+  telos_context_chars:
+    type: int
+    default: 900
+    label: "Telos context size"
+    description: "Maximum characters of charter context injected before a model call (300-3000)."
+  telos_drift_after_actions:
+    type: int
+    default: 8
+    label: "Telos action check interval"
+    description: "Observe goal drift after this many actions without progress (3-100)."
+  enable_moirai:
+    type: bool
+    default: true
+    label: "Enable Moirai previews"
+    description: "Generate side-effect-free impact previews for sensitive actions."
+  moirai_max_items:
+    type: int
+    default: 50
+    label: "Moirai maximum items"
+    description: "Maximum targets or effects listed in one preview (1-500)."
+  enable_metis:
+    type: bool
+    default: true
+    label: "Enable Metis circuits"
+    description: "Fingerprint failed execution patterns and open temporary retry circuits."
+  metis_failure_threshold:
+    type: int
+    default: 3
+    label: "Metis failure threshold"
+    description: "Repeated identical failures before a circuit opens (2-20)."
+  metis_window_minutes:
+    type: int
+    default: 30
+    label: "Metis failure window (minutes)"
+    description: "Window used to count repeated failures (1-1440)."
+  metis_circuit_minutes:
+    type: int
+    default: 30
+    label: "Metis circuit duration (minutes)"
+    description: "How long an automatic circuit remains open (1-1440)."
+  enable_hephaestus:
+    type: bool
+    default: true
+    label: "Enable Hephaestus forging"
+    description: "Distill successful traces, forge reviewable skills and blueprints, and enforce safety leases for unattended Cron runs."
+  hephaestus_artifact_dir:
+    type: str
+    default: ""
+    label: "Hephaestus artifact directory"
+    description: "Optional directory for forged artifacts. Empty uses the plugin data directory."
+  hephaestus_min_confidence:
+    type: float
+    default: 0.5
+    label: "Minimum forge confidence"
+    description: "Minimum successful-steps / attempts ratio before a trace may be forged without force (0.0-1.0)."
+  hephaestus_max_trace_events:
+    type: int
+    default: 5000
+    label: "Maximum trace events"
+    description: "Maximum session events considered by one distillation pass (100-10000)."
+  hephaestus_max_steps:
+    type: int
+    default: 80
+    label: "Maximum playbook steps"
+    description: "Maximum verified steps retained in one forged skill (1-200)."
+  hephaestus_lease_minutes:
+    type: int
+    default: 1440
+    label: "Default lease duration (minutes)"
+    description: "Default lifetime of a new safety lease (5-43200)."
+  hephaestus_max_lease_days:
+    type: int
+    default: 30
+    label: "Maximum lease duration (days)"
+    description: "Hard upper bound for any safety lease (1-365)."
+  hephaestus_cron_enforce:
+    type: bool
+    default: true
+    label: "Enforce leases in unattended Cron"
+    description: "Block Cron tool calls that are outside an active, unexpired safety lease. Lease checks never grant approval."
+  hephaestus_quarantine_untrusted_skill_writes:
+    type: bool
+    default: true
+    label: "Quarantine untrusted skill writes"
+    description: "Block skill-file writes while the current session still contains source-labelled untrusted external content."
