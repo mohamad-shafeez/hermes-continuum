@@ -85,7 +85,7 @@ security scan caution: hardcoded_secret
 ```
 
 Those files are excluded from the public commit. Validate the clean tracked tree
-before catalog submission. A clean export of the tracked index (80 files at
+before catalog publication. A clean export of the tracked index (80 files at
 that point) was validated separately:
 
 ```text
@@ -257,10 +257,10 @@ The original host-enabled full offline run for this build was:
 The warning is a third-party Starlette/httpx `TestClient` deprecation warning,
 not a plugin failure.
 
-After the live audit, the only submission edit to the tests was removing a
+After the live audit, the only publication edit to the tests was removing a
 hardcoded local Hermes launcher path from `tests/test_installation.py`. The
 installed-host validator smoke test is now opt-in via `HERMES_LAUNCHER`; without
-it the test skips. The submission-tree rerun produced:
+it the test skips. The repository tree rerun produced:
 
 ```text
 184 passed, 1 skipped, 1 warning in 163.00s (0:02:42)
@@ -272,7 +272,7 @@ A targeted rerun of the edited installation file produced:
 8 passed, 1 skipped in 12.50s
 ```
 
-The plugin implementation was not changed for submission preparation.
+The plugin implementation was not changed for release preparation.
 
 **Status: VERIFIED for the offline suite and the test-harness portability
 edit.**

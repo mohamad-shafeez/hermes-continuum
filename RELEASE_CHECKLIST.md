@@ -1,8 +1,8 @@
-# Submission Checklist - Hermes Continuum 0.3.0
+# Release Checklist - Hermes Continuum 0.3.0
 
 **Prepared:** 2026-11-11
 
-**Status:** local submission preparation complete; publication is a developer
+**Status:** local release preparation complete; publication is a developer
 action.
 
 **Plugin:** `hermes-continuum` `0.3.0`
@@ -14,12 +14,11 @@ action.
 
 This file records the exact local state, the public-file boundary, the catalog
 PR preparation, and the remaining blockers. It does **not** claim that the
-plugin is published, pushed, in the catalog, released, or submitted to the
-hackathon.
+plugin is in the catalog or has been released.
 
 ## 1. What is complete
 
-- Local Git repository initialized with a single submission commit prepared.
+- Local Git repository initialized with a single release-preparation commit prepared.
 - Public tree staged from the repository root; local-only audit material excluded
   through `.git/info/exclude` and retained on disk.
 - Current-facing README, CHANGELOG, MIT `LICENSE`, `VERIFICATION.md`, this
@@ -27,14 +26,14 @@ hackathon.
 - Three live Desktop screenshots selected under `docs/screenshots/`.
 - Clean-tree plugin validator: **15/15 checks, `warnings: []`, exit 0**.
 - Plugin doctor: **12 tools, 11 hooks**, exit 0.
-- Submission-tree full offline suite: **184 passed, 1 skipped, 1 warning,
+- Repository tree full offline suite: **184 passed, 1 skipped, 1 warning,
   163.00s**; the skip is the opt-in installed-host validator test.
 - Catalog entry template prepared below with the required fields and full-SHA
   pin rule.
 
 ## 2. Frozen implementation
 
-The plugin implementation was not expanded or redesigned for submission. The
+The plugin implementation was not expanded or redesigned for release. The
 only tracked code-adjacent edit after the live audit was removing a hardcoded
 local Hermes launcher path from `tests/test_installation.py`; the installed-host
 smoke test is now opt-in through `HERMES_LAUNCHER`. No core service, tool, hook,
@@ -53,7 +52,7 @@ Commands used to prepare the commit:
 ```powershell
 git add -A
 git diff --cached --name-only
-git commit -m "Prepare Hermes Continuum 0.3.0 submission"
+git commit -m "Prepare Hermes Continuum 0.3.0 release"
 git status --short
 git rev-parse HEAD
 git remote -v
@@ -144,7 +143,7 @@ fixtures/attack_lab_cases.json
 LICENSE
 plugin.yaml
 README.md
-SUBMISSION_CHECKLIST.md
+RELEASE_CHECKLIST.md
 tests/conftest.py
 tests/pytest.ini
 tests/test_aletheia.py
@@ -264,7 +263,7 @@ Exit code: `0`.
 python -m pytest tests -q
 ```
 
-Recorded on the submission tree:
+Recorded on the release tree:
 
 ```text
 184 passed, 1 skipped, 1 warning in 163.00s (0:02:42)
@@ -373,7 +372,7 @@ remaining catalog-admission command that did not finish here.
 6. Wait for a maintainer review; do not self-merge.
 ```
 
-Do not push, open the PR, or post the submission until the developer explicitly
+Do not push, open the PR, or post the release until the developer explicitly
 authorizes it.
 
 ## 8. Blockers and unverified boundaries
@@ -385,12 +384,12 @@ authorizes it.
 | Host `.hermes-update-in-progress` blocks the normal launcher | **Workaround used** | Verified Desktop path used a temporary local launcher; the host marker was not modified. |
 | Backend on `127.0.0.1:52750` is currently down | **Expected** | The recorded screenshots remain valid; restart the backend before recapturing. |
 | Only checkpoint export is a live-verified mutation | **Partial** | The other 26 Dashboard mutation routes are test-covered only. |
-| Real Cron, lease revocation, tool-scope block, quarantine consumption, checkpoint import, fresh-process rehydration | **Not live-verified** | Do not claim them in the demo or submission copy. |
+| Real Cron, lease revocation, tool-scope block, quarantine consumption, checkpoint import, fresh-process rehydration | **Not live-verified** | Do not claim them in the demo or public copy. |
 | Local deterministic model fixture | **Disclosed test fixture** | The host tool call and Event Spine are real; the model is not a production model. |
 
 See [VERIFICATION.md](VERIFICATION.md) for the full matrix and exact evidence.
 
-## 9. Proof boundaries for the submission copy
+## 9. Proof boundaries for the public copy
 
 Safe to say:
 
@@ -403,7 +402,7 @@ Safe to say:
 - 15 Dashboard GET routes returned HTTP `200`; checkpoint export was exercised
   live.
 - The clean public tree passes the plugin validator with no warnings.
-- The offline suite passes on the submission tree.
+- The offline suite passes on the release tree.
 
 Do not say:
 
@@ -425,7 +424,7 @@ Do not say:
    contributors" or be changed before release.
 5. Confirm the catalog maintainer handle and category.
 6. Open the catalog PR and respond to review.
-7. Publish the repository, demo, and hackathon submission only after explicit
+7. Publish the repository, demo, and public release only after explicit
    authorization.
 
 No push, PR, release, catalog entry, or social post has been created by this

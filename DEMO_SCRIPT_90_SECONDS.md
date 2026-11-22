@@ -70,7 +70,7 @@ temporary user-data directory. In the app:
 If the normal launcher reports `source-update completion failed: an update is
 still running`, the host has an interrupted source update. Do not edit or delete
 `.hermes-update-in-progress`. Use the local audit launcher documented in
-`SUBMISSION_CHECKLIST.md`; it imports the real CLI and only stubs the
+`RELEASE_CHECKLIST.md`; it imports the real CLI and only stubs the
 source-update completion step.
 
 Start the disclosed local model fixture in a third PowerShell window if it is
