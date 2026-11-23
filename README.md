@@ -1,5 +1,10 @@
 # Hermes Continuum
 
+[![CI](https://github.com/mohamad-shafeez/hermes-continuum/actions/workflows/ci.yml/badge.svg)](https://github.com/mohamad-shafeez/hermes-continuum/actions/workflows/ci.yml)
+![Tests](https://img.shields.io/badge/tests-184%20passed-success)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Hermes Agent](https://img.shields.io/badge/Hermes%20Agent-v0.22.2-5B4B8A)
+
 Hermes Continuum is one integrated plugin for the **Hermes Agent**, a
 general-purpose autonomous action agent. Hermes is not limited to coding: it
 works with research and browsing, documents and spreadsheets, files, shells and
@@ -42,10 +47,11 @@ composes the other eight systems' history into reusable, reviewable artifacts.
 > **Registration:** 12 tools, 11 hooks, 42 Console/API routes, 67 event types,
 > 25 tables, 32 manifest configuration keys
 >
-> **Publication:** local submission preparation only. No remote, push, PR,
-> catalog entry, release, or hackathon submission has been created.
+> **Repository:** [github.com/mohamad-shafeez/hermes-continuum](https://github.com/mohamad-shafeez/hermes-continuum)
+>
+> **Upstream contribution:** [NousResearch/hermes-agent#153650](https://github.com/NousResearch/hermes-agent/pull/153650) (merged)
 
-## Submission verification at a glance
+## Verification at a glance
 
 The isolated `continuum-live` profile on Hermes Agent `v0.22.2` loaded this
 plugin and reported 12 tools and 11 hooks. A fresh host-mediated
@@ -547,7 +553,7 @@ host context:
 python -m pytest tests -q
 ```
 
-The submission-tree full offline run is **184 passed, 1 skipped, 1 third-party
+The repository tree full offline run is **184 passed, 1 skipped, 1 third-party
 Starlette/httpx deprecation warning, 163.00s** on Python 3.11.7. The skipped test
 is the opt-in installed-host validator smoke; the earlier host-enabled run was
 **185 passed, 1 warning, 506.25s**. The suite covers
@@ -668,7 +674,7 @@ hermes-continuum/
 ├── CHANGELOG.md
 ├── VERIFICATION.md
 ├── DEMO_SCRIPT_90_SECONDS.md
-├── SUBMISSION_CHECKLIST.md
+├── RELEASE_CHECKLIST.md
 ├── plugin.yaml                 # manifest v2: 11 hooks, 12 tools, 32 config keys
 ├── __init__.py                 # loader entry: hooks/tools/CLI/slash
 ├── continuum_core/             # Event Spine, nine systems, checkpoints, adapters
@@ -686,7 +692,7 @@ hermes-continuum/
 build artifact. Historical audit reports, raw evidence, local profiles, and
 machine-specific runbooks are intentionally excluded from the public tree; the
 originals remain in the developer workspace. See
-[SUBMISSION_CHECKLIST.md](SUBMISSION_CHECKLIST.md) for the exclusion list.
+[RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md) for the exclusion list.
 
 ## Documentation
 
@@ -698,15 +704,17 @@ originals remain in the developer workspace. See
 - [VERIFICATION.md](VERIFICATION.md) — exact live and offline verification
   results, commands, environment, and proof boundaries.
 - [DEMO_SCRIPT_90_SECONDS.md](DEMO_SCRIPT_90_SECONDS.md) — sub-90-second
-  hackathon demo using the live profile and production Desktop Console.
-- [SUBMISSION_CHECKLIST.md](SUBMISSION_CHECKLIST.md) — local Git state, catalog
+  short demo using the live profile and production Desktop Console.
+- [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md) — local Git state, catalog
   PR preparation, public file inventory, blockers, and developer-only actions.
 
-## License and publication status
+## License and repository status
 
 The plugin is licensed under the MIT License; see [LICENSE](LICENSE).
 Copyright (c) 2026 Hermes Continuum contributors.
 
-This repository is local submission preparation. A local Git commit is
-prepared, but no remote, push, PR, catalog entry, release, or hackathon
-submission has been created. Publication requires explicit developer action.
+The repository is published at
+[github.com/mohamad-shafeez/hermes-continuum](https://github.com/mohamad-shafeez/hermes-continuum).
+The compatibility fix contributed upstream was merged in
+[NousResearch/hermes-agent#153650](https://github.com/NousResearch/hermes-agent/pull/153650).
+Changes on the current local branch remain unpublished until reviewed and pushed.

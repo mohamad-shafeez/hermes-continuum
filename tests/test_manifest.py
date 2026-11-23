@@ -188,7 +188,7 @@ def test_required_docs_and_fixtures_exist() -> None:
         "README.md",
         "CHANGELOG.md",
         "VERIFICATION.md",
-        "SUBMISSION_CHECKLIST.md",
+        "RELEASE_CHECKLIST.md",
     ):
         assert (PLUGIN_ROOT / name).is_file(), name
     assert (PLUGIN_ROOT / "fixtures" / "attack_lab_cases.json").is_file()

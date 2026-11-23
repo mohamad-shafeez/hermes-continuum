@@ -14,6 +14,8 @@ from continuum_core.common.errors import StorageError
 from continuum_core.common.redaction import contains_secret, redact_text
 from continuum_core.spine.store import SpineStore
 
+# Fake fixtures used only to exercise secret detection and redaction.
+# These are not real credentials.
 SECRET = "sk-ant-api03-abcdefghijklmnopqrstuvwxyz0123456789"
 GITHUB = "ghp_abcdefghijklmnopqrstuvwxyz0123456789"
 AWS = "AKIAABCDEFGHIJKLMNOP"

@@ -185,7 +185,7 @@ three systems and the 0.1.0 public surfaces are preserved.
   unverified for this exact build.
 - No TOCTOU immunity, rollback, arbitrary shell simulation, universal evidence,
   guaranteed loop prevention, guaranteed safety, Git repository, publication,
-  catalog entry, or hackathon submission is claimed or included.
+  catalog entry, or public release is claimed or included.
 
 ## Pre-0.2.0 — repository audit and expansion preparation
 
